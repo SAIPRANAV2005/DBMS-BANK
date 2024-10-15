@@ -1,0 +1,392 @@
+mysql> use bank;
+Database changed
+mysql> desc branch;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| br_name | varchar(50) | YES  |     | NULL    |       |
+| br_city | varchar(50) | YES  |     | NULL    |       |
+| assets  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc account;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| acc_no  | int         | YES  |     | NULL    |       |
+| br_name | varchar(20) | YES  |     | NULL    |       |
+| balance | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc customer;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| cust_name   | varchar(20) | YES  |     | NULL    |       |
+| cust_street | varchar(50) | YES  |     | NULL    |       |
+| cust_city   | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc depositer;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| cust_name | varchar(20) | YES  |     | NULL    |       |
+| acc_no    | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc loan;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| ln_no   | varchar(20) | YES  |     | NULL    |       |
+| br_name | varchar(50) | YES  |     | NULL    |       |
+| amount  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into branch values("SBI_Chamrajpet","Bangalore",500000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into branch values("SBI_ResidencyRoad","Bangalore",50000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into branch values("SBI_ShivajiRoad","Bombay",200000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into branch values("SBI_ParlimentRoad","Delhi",10000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into branch values("SBI_Jantarmantar","Delhi",300000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc branch;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| br_name | varchar(50) | YES  |     | NULL    |       |
+| br_city | varchar(50) | YES  |     | NULL    |       |
+| assets  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from branch;
++-------------------+-----------+--------+
+| br_name           | br_city   | assets |
++-------------------+-----------+--------+
+| SBI_Chamrajpet    | Bangalore | 500000 |
+| SBI_ResidencyRoad | Bangalore |  50000 |
+| SBI_ShivajiRoad   | Bombay    | 200000 |
+| SBI_ParlimentRoad | Delhi     |  10000 |
+| SBI_Jantarmantar  | Delhi     | 300000 |
++-------------------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into account values(1,"SBI_Chamrajpet",20000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(2,"SBI_ResidencyRoad",5000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(3,"SBI_ShivajiRoad",40000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(4,"SBI_ParlimentRoad",2000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(5,"SBI_Jantarmantar",50000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(6,"SBI_ShivajiRoad",4000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(7,"SBI_ResidencyRoad",8000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(8,"SBI_ParlimentRoad",12000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(9,"SBI_ResidencyRoad",7000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into account values(10,"SBI_Jantarmantar",9000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from account;
++--------+-------------------+---------+
+| acc_no | br_name           | balance |
++--------+-------------------+---------+
+|      1 | SBI_Chamrajpet    |   20000 |
+|      2 | SBI_ResidencyRoad |    5000 |
+|      3 | SBI_ShivajiRoad   |   40000 |
+|      4 | SBI_ParlimentRoad |    2000 |
+|      5 | SBI_Jantarmantar  |   50000 |
+|      6 | SBI_ShivajiRoad   |    4000 |
+|      7 | SBI_ResidencyRoad |    8000 |
+|      8 | SBI_ParlimentRoad |   12000 |
+|      9 | SBI_ResidencyRoad |    7000 |
+|     10 | SBI_Jantarmantar  |    9000 |
++--------+-------------------+---------+
+10 rows in set (0.00 sec)
+
+mysql> insert into customer values("Avinash","Bull_temple_road","Bangalore");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values("Dinesh","Bannergatta_road","Bangalore");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values("Mohan","National_college_road","Bangalore");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values("Nikil","Akbar_road","Delhi");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values("Ravi","Pritviraj_road","Delhi");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from customer;
++-----------+-----------------------+-----------+
+| cust_name | cust_street           | cust_city |
++-----------+-----------------------+-----------+
+| Avinash   | Bull_temple_road      | Bangalore |
+| Dinesh    | Bannergatta_road      | Bangalore |
+| Mohan     | National_college_road | Bangalore |
+| Nikil     | Akbar_road            | Delhi     |
+| Ravi      | Pritviraj_road        | Delhi     |
++-----------+-----------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> insert into depositer values("Avinash", 1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into depositer values("Dinesh", 2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into depositer values("Nikil", 4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into depositer values("Ravi", 5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into depositer values("Avinash", 8);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into depositer values("Nikil", 9);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into depositer values("Dinesh", 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into depositer values("Nikil", 11);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from depositer;
++-----------+--------+
+| cust_name | acc_no |
++-----------+--------+
+| Avinash   |      1 |
+| Dinesh    |      2 |
+| Nikil     |      4 |
+| Ravi      |      5 |
+| Avinash   |      8 |
+| Nikil     |      9 |
+| Dinesh    |     10 |
+| Nikil     |     11 |
++-----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> insert into loan values(1,"SBI_Chamrajpet",20000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(2,"SBI_ResidencyRoad",5000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(3,"SBI_ShivajiRoad",40000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(4,"SBI_Parliment",2000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(5,"SBI_Jantarmantar",50000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(6,"SBI_ShivajiRoad",4000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(7,"SBI_ResidencyRoad",8000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(8,"SBI_ParlimentRoad",12000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(9,"SBI_ResidencyRoad",7000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(10,"SBI_Jantarmantar",9000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from loan;
++-------+-------------------+--------+
+| ln_no | br_name           | amount |
++-------+-------------------+--------+
+| 1     | SBI_Chamrajpet    |  20000 |
+| 2     | SBI_ResidencyRoad |   5000 |
+| 3     | SBI_ShivajiRoad   |  40000 |
+| 4     | SBI_Parliment     |   2000 |
+| 5     | SBI_Jantarmantar  |  50000 |
+| 6     | SBI_ShivajiRoad   |   4000 |
+| 7     | SBI_ResidencyRoad |   8000 |
+| 8     | SBI_ParlimentRoad |  12000 |
+| 9     | SBI_ResidencyRoad |   7000 |
+| 10    | SBI_Jantarmantar  |   9000 |
++-------+-------------------+--------+
+10 rows in set (0.00 sec)
+
+
+mysql> drop table loan;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table loan(acc_no int,
+    -> br_name varchar(50),
+    -> balance int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into loan values(1,"SBI_Chamrajpet",20000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(2,"SBI_ResidencyRoad",5000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(3,"SBI_ShivajiRoad",40000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(4,"SBI_Parliment",2000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into loan values(5,"SBI_Jantarmantar",50000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from loan;
++--------+-------------------+---------+
+| acc_no | br_name           | balance |
++--------+-------------------+---------+
+|      1 | SBI_Chamrajpet    |   20000 |
+|      2 | SBI_ResidencyRoad |    5000 |
+|      3 | SBI_ShivajiRoad   |   40000 |
+|      4 | SBI_Parliment     |    2000 |
+|      5 | SBI_Jantarmantar  |   50000 |
++--------+-------------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select br_name, concat(assets/1000000,"Lakhs")assets_in_Lakhs from branch;
++-------------------+-----------------+
+| br_name           | assets_in_Lakhs |
++-------------------+-----------------+
+| SBI_Chamrajpet    | 0.5000Lakhs     |
+| SBI_ResidencyRoad | 0.0500Lakhs     |
+| SBI_ShivajiRoad   | 0.2000Lakhs     |
+| SBI_ParlimentRoad | 0.0100Lakhs     |
+| SBI_Jantarmantar  | 0.3000Lakhs     |
++-------------------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select d.Cust_name from depositer d,account b where b.br_name="SBI_ResidencyRoad" and d.acc_no=
+b.acc_no group by d.cust_name having count(d.acc_no)>=2;
+Empty set (0.00 sec)
+
+mysql> select d.cust_name from depositer d,account b where b.br_name="SBI_ResidencyRoad" and d.acc_no=
+b.acc_no group by d.cust_name having count(d.acc_no)>=2;
+Empty set (0.00 sec)
+
+mysql> select * from depositer;
++-----------+--------+
+| cust_name | acc_no |
++-----------+--------+
+| Avinash   |      1 |
+| Dinesh    |      2 |
+| Nikil     |      4 |
+| Ravi      |      5 |
+| Avinash   |      8 |
+| Nikil     |      9 |
+| Dinesh    |     10 |
+| Nikil     |     11 |
++-----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select * from account;
++--------+-------------------+---------+
+| acc_no | br_name           | balance |
++--------+-------------------+---------+
+|      1 | SBI_Chamrajpet    |   20000 |
+|      2 | SBI_ResidencyRoad |    5000 |
+|      3 | SBI_ShivajiRoad   |   40000 |
+|      4 | SBI_ParlimentRoad |    2000 |
+|      5 | SBI_Jantarmantar  |   50000 |
+|      6 | SBI_ShivajiRoad   |    4000 |
+|      7 | SBI_ResidencyRoad |    8000 |
+|      8 | SBI_ParlimentRoad |   12000 |
+|      9 | SBI_ResidencyRoad |    7000 |
+|     10 | SBI_Jantarmantar  |    9000 |
++--------+-------------------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select * from account;
++--------+-------------------+---------+
+| acc_no | br_name           | balance |
++--------+-------------------+---------+
+|      1 | SBI_Chamrajpet    |   20000 |
+|      2 | SBI_ResidencyRoad |    5000 |
+|      3 | SBI_ShivajiRoad   |   40000 |
+|      4 | SBI_ParlimentRoad |    2000 |
+|      5 | SBI_ResidencyRoad |   50000 |
+|      6 | SBI_ShivajiRoad   |    4000 |
+|      7 | SBI_ResidencyRoad |    8000 |
+|      8 | SBI_ParlimentRoad |   12000 |
+|      9 | SBI_ResidencyRoad |    7000 |
+|     10 | SBI_ResidencyRoad |    9000 |
++--------+-------------------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select d.Cust_name from depositer d,account b where b.br_name="SBI_ResidencyRoad" and d.acc_no=b.acc_no group by d.cust_name having count(d.acc_no)>=2;
++-----------+
+| Cust_name |
++-----------+
+| Dinesh    |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> create view sum_of_loan
+    -> as select br_name, SUM(balance)
+    -> from account
+    -> group by br_name;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from sum_of_loan;
++-------------------+--------------+
+| br_name           | SUM(balance) |
++-------------------+--------------+
+| SBI_Chamrajpet    |        20000 |
+| SBI_ResidencyRoad |        79000 |
+| SBI_ShivajiRoad   |        44000 |
+| SBI_ParlimentRoad |        14000 |
++-------------------+--------------+
+4 rows in set (0.00 sec)
+
+
+
+mysql> select bc.cust_name,concat(balance+1000,"rupees")
+    -> updated_bal from account b, customer bc,depositer d where bc.cust_name=d.cust_name and b.acc_no
+=d.acc_no and bc.cust_city="bangalore";
++-----------+-------------+
+| cust_name | updated_bal |
++-----------+-------------+
+| Avinash   | 21000rupees |
+| Dinesh    | 6000rupees  |
+| Avinash   | 13000rupees |
+| Dinesh    | 10000rupees |
++-----------+-------------+
+4 rows in set (0.00 sec)
